@@ -6,8 +6,8 @@
 	DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据的通道，使得CPU的效率大大提高。
 
 ### 2. 缓存一致性
+![CPU](https://github.com/Liyaxxx/Photo/blob/main/CPU-Cache.webp "CPU")
 
-	！[CPU缓存](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost2/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/CPU-Cache.png "CPU缓存")
 	现在 CPU 都是多核的，由于 L1/L2 Cache 是多个核心各自独有的，那么会带来多核心的缓存一致性（Cache Coherence） 的问题，如果不能保证缓存一致性的问题，就可能造成结果错误。
 
 #### 2.1 缓存一致性问题产出的原因
@@ -17,7 +17,8 @@
 	对于DMA缓冲区的操作可以根据数据流向分为两种情况：
 		1. 从DMA缓冲区(内存)到设备的FIFO缓冲区
 		2. 从设备的FIFO缓冲区到DMA缓冲区。
-	！[DMA与高速缓存](D:\MyDoucment\Note\内存.png "DMA")
+![DMA](https://github.com/Liyaxxx/Photo/blob/main/%E5%86%85%E5%AD%98.png "DMA")
+
 	对于一致性主要考虑两个问题，在启动DMA之前：
 		1. 最新的数据在哪里？是CPU侧还是设备侧。
 		2. DMA缓冲区对应的高速缓存数据是最新的还是过时的。
